@@ -23,19 +23,32 @@
   
 ## 기능
   
-### 주차 관리 프로그램  
->   : 사용자의 위치를 availCount 변수의 수치로 판단하여 출력한다. 위치 정보의 신뢰성은 Q값으로 판단한다.  
+### 주차 관리 프로그램 
+> Manager 클래스에서 관리한다.
+>   - 사용자의 위치를 availCount 변수의 수치로 판단하여 출력한다. 위치 정보의 신뢰성은 Q값으로 판단한다.  
 >   (Q = 1 : 해가 픽스되어 가장 정확도 높음, Q = 2 : float해로 신뢰도가 떨어짐, Q = 5 : 네트워크 연결 불안정으로 인해 single 로 전환하여 구한 결과)  
->   : Q = 1일때 availCount += 2, Q = 2일때 availCount -= 1, 그 외의 상황에서는 availCount의 값이 0으로 초기화된다. availCount 값이 10 이상이 되면 주차 완료로 간주하고 프로그램을 종료함.  
+>   - Q = 1일때 availCount += 2, Q = 2일때 availCount -= 1, 그 외의 상황에서는 availCount의 값이 0으로 초기화된다. availCount 값이 10 이상이 되면 주차 완료로 간주하고 프로그램을 종료함.  
 > 결과 예시  
-    ![출력예시](https://user-images.githubusercontent.com/92227496/139967420-f8102fee-1d8d-49b5-8fa2-b5e47908ac1f.jpg)
+    ![출력예시](https://user-images.githubusercontent.com/92227496/139967420-f8102fee-1d8d-49b5-8fa2-b5e47908ac1f.jpg)  
 
-### 
+### 벌금 부과 프로그램
+> FineManager 클래스에서 관리한다. ECEF 좌표계 기준.  
+>   - 제한 속도를 입력하고, 프로그램 최소 실행 조건을 갖췄을 때 실행되며, 벌금 현황 textbox에 제한 속도 초과 여부가 표시된다.  
+>   - 프로그램이 종료되면 부여된 총 벌금을 출력  
 
-### 테스트 데이터
+### RMS 측정 프로그램
+> RMS 클래스에서 관리한다.
+>   - 사용자 위치정보의 정확도를 수치로 판단하기 위해 RMS 계산을 시행한다. 별도의 rms 측정 GroupBox에서 ECEF 좌표계 기반 사용자 위치 파일을 선택하고, 기존 입력 파일 관리 GroupBox에서 경위도 좌표계 기반 사용자 위치 파일을 선택한 후 rms 확인 버튼을 눌러 rms 값을 확인할 수 있다.  
+
+### 한계와 개선점  
+> 1. 벌금 부과 프로그램  
+>   : 최대한 많은 기능을 구현하고자 하는 욕심에 쓸데없는 기능을 추가한 것 같다. GNSS 정보 계산을 통해 과속 여부를 실시간으로 판단하는 건 현실성과 효용성이 떨어진다고 생각함. 더불어 한 개의 폼에서 주차 시스템과 동시에 구현되었기 때문에, 입력 파일 좌표계에 따른 혼동이 오기 쉽다.  
+>   
+
+### 테스트 데이터  
 
 ### 참조
 사용 모듈 : ZED-F9P  
-RINEX 데이터 : <https://gnssdata.or.kr/>
-RTKLIB : <https://www.rtklib.com/>
+RINEX 데이터 : <https://gnssdata.or.kr/>  
+RTKLIB : <https://www.rtklib.com/>  
 
